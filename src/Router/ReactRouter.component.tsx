@@ -1,17 +1,32 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 
 import PublicPage from '../Pages/PublicPage/PublicPage.component';
 import LoginPage from '../Pages/LoginPage/LoginPage.component';
 import AdviserPage from '../Pages/AdviserPage/AdviserPage.component';
 import Header from '../Components/Header/Header.component';
-const ReactRouter = () => {
+
+interface ReactRouterTypes {
+  userName: null | any;
+}
+const ReactRouter: React.FC<ReactRouterTypes> = ({ userName }) => {
   return (
     <Router>
-      <Header />
+      <Header user={userName} />
       <Switch>
         <Route exact path="/" render={() => <PublicPage />} />
-        <Route path="/login" render={() => <LoginPage />} />
-        <Route path="/adviser" render={() => <AdviserPage />} />
+        <Route
+          path="/login"
+          render={() => (userName ? <Redirect to="/adviser" /> : <LoginPage />)}
+        />
+        <Route
+          path="/adviser"
+          render={() => (userName ? <AdviserPage /> : <Redirect to="/login" />)}
+        />
       </Switch>
     </Router>
   );

@@ -11,7 +11,7 @@ function App() {
   }, [userName]);
   return (
     <div>
-      <ReactRouter />
+      <ReactRouter userName={userName} />
     </div>
   );
 }
