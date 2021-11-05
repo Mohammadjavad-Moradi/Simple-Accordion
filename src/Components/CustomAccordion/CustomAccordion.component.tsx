@@ -1,3 +1,6 @@
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 import {
   AccordionStyles,
   AccordionSummaryStyles,
@@ -24,8 +27,10 @@ const CustomAccordion: React.FC<AccordionProps> = ({
   handleClick,
   id,
 }) => {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down('sm'));
   return (
-    <AccordionStyles expanded={expanded}>
+    <AccordionStyles expanded={expanded} xs={matches ? 'xs' : undefined}>
       <AccordionSummaryStyles
         aria-controls={`panel${id}d-content`}
         id={`panel${id}d-header`}
@@ -40,7 +45,9 @@ const CustomAccordion: React.FC<AccordionProps> = ({
       >
         <AccordionTitleStyles>
           <TitleWrapperStyles>
-            <TitleStyles>If you or your child were born in the UK</TitleStyles>
+            <TitleStyles xs={matches ? 'xs' : undefined}>
+              If you or your child were born in the UK
+            </TitleStyles>
           </TitleWrapperStyles>
         </AccordionTitleStyles>
       </AccordionSummaryStyles>

@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import CustomAccordion from '../../Components/CustomAccordion/CustomAccordion.component';
+import { PublicPageWrapperStyles } from './PublicPage.styles';
 const PublicPage: React.FC = () => {
   const [expanded, setExpanded] = useState<boolean | number>(false);
   const handleClick = (id: number): void => {
     id === expanded ? setExpanded(false) : setExpanded(id);
   };
   return (
-    <div>
+    <PublicPageWrapperStyles>
       <CustomAccordion
         handleClick={handleClick}
         expanded={expanded === 1}
@@ -22,7 +23,7 @@ const PublicPage: React.FC = () => {
         expanded={expanded === 3}
         id={3}
       />
-    </div>
+    </PublicPageWrapperStyles>
   );
 };
 
