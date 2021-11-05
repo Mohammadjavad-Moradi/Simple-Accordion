@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ThemeProvider as MaterialThemeProvider } from '@mui/material/styles';
+import { ThemeProvider as StyledThemeProvider } from 'styled-components';
+import { theme } from './theme';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <MaterialThemeProvider theme={theme}>
+      <StyledThemeProvider theme={theme}>
+        <App />
+      </StyledThemeProvider>
+    </MaterialThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
