@@ -122,3 +122,19 @@ export const AddIconStyles = styled(AddIcon)`
 export const RemoveIconStyles = styled(RemoveIcon)`
   margin: 0 18px;
 `;
+
+export const ReferenceButtonStyles = styled(({ ...props }) => (
+  <Button {...props} />
+))`
+  && {
+    min-width: ${(props) => (props.xs ? '82px' : '93px')};
+    min-height: 36px;
+    border-radius: 0;
+    color: #018176;
+    border-color: #018176;
+    background-color: #ffffff;
+    text-transform: none;
+    font-size: ${(props) => (props.xs ? '14px' : '16px')};
+    margin: ${(props) => (props.xs ? '0' : '18px 16px 18px 16px')};
+  }
+`;

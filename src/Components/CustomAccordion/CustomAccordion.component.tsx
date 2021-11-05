@@ -14,18 +14,21 @@ import {
   TitleStyles,
   AddIconStyles,
   RemoveIconStyles,
+  ReferenceButtonStyles,
 } from './CustomAccordion.styles';
 
 interface AccordionProps {
   expanded: boolean;
   handleClick(id: number): void;
   id: number;
+  type: string | null;
 }
 
 const CustomAccordion: React.FC<AccordionProps> = ({
   expanded,
   handleClick,
   id,
+  type,
 }) => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
@@ -49,6 +52,14 @@ const CustomAccordion: React.FC<AccordionProps> = ({
               If you or your child were born in the UK
             </TitleStyles>
           </TitleWrapperStyles>
+          {type === 'loggedIn' ? (
+            <ReferenceButtonStyles
+              variant="outlined"
+              xs={matches ? 'xs' : undefined}
+            >
+              Reference
+            </ReferenceButtonStyles>
+          ) : null}
         </AccordionTitleStyles>
       </AccordionSummaryStyles>
       <AccordionDetailsStyles>

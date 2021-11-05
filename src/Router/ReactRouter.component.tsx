@@ -18,7 +18,7 @@ const ReactRouter: React.FC<ReactRouterTypes> = ({ userName }) => {
     <Router>
       <Header user={userName} />
       <Switch>
-        <Route exact path="/" render={() => <PublicPage />} />
+        <Route exact path="/" render={() => <PublicPage user={userName} />} />
         <Route
           path="/login"
           render={() => (userName ? <Redirect to="/adviser" /> : <LoginPage />)}
