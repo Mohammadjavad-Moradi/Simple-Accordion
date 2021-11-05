@@ -15,7 +15,8 @@ export const AccordionStyles = styled(({ ...props }) => (
     width: ${(props) => (props.xs ? '288px' : '459px')};
     min-height: ${(props) => (props.xs ? '72px' : '48px')};
 
-    background-color: #ffffff !important;
+    background-color: ${(props) =>
+      props.type === 'adviser' ? '#E6EFF2' : '#FFFFFF'} !important;
     border: 1px solid #004b88;
   }
 `;
@@ -136,5 +137,20 @@ export const ReferenceButtonStyles = styled(({ ...props }) => (
     text-transform: none;
     font-size: ${(props) => (props.xs ? '14px' : '16px')};
     margin: ${(props) => (props.xs ? '0' : '18px 16px 18px 16px')};
+  }
+`;
+
+export const AdviserButtonStyles = styled(({ ...props }) => (
+  <Button {...props} />
+))`
+  && {
+    min-width: ${(props) => (props.xs ? '69px' : '76px')};
+    min-height: 30px;
+    font-size: ${(props) => (props.xs ? '14px' : '16px')};
+    border-radius: 0;
+    background-color: #006278;
+    color: #ffffff;
+    text-transform: none;
+    margin: 12px 16px 0 16px;
   }
 `;

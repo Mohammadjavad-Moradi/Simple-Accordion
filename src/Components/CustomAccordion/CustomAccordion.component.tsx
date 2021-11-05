@@ -15,6 +15,7 @@ import {
   AddIconStyles,
   RemoveIconStyles,
   ReferenceButtonStyles,
+  AdviserButtonStyles,
 } from './CustomAccordion.styles';
 
 interface AccordionProps {
@@ -33,7 +34,11 @@ const CustomAccordion: React.FC<AccordionProps> = ({
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
   return (
-    <AccordionStyles expanded={expanded} xs={matches ? 'xs' : undefined}>
+    <AccordionStyles
+      expanded={expanded}
+      xs={matches ? 'xs' : undefined}
+      type={type}
+    >
       <AccordionSummaryStyles
         aria-controls={`panel${id}d-content`}
         id={`panel${id}d-header`}
@@ -48,11 +53,16 @@ const CustomAccordion: React.FC<AccordionProps> = ({
       >
         <AccordionTitleStyles>
           <TitleWrapperStyles>
+            {type === 'adviser' && (
+              <AdviserButtonStyles xs={matches ? 'xs' : undefined}>
+                Adviser
+              </AdviserButtonStyles>
+            )}
             <TitleStyles xs={matches ? 'xs' : undefined}>
               If you or your child were born in the UK
             </TitleStyles>
           </TitleWrapperStyles>
-          {type === 'loggedIn' ? (
+          {type === 'adviser' || type === 'loggedIn' ? (
             <ReferenceButtonStyles
               variant="outlined"
               xs={matches ? 'xs' : undefined}
